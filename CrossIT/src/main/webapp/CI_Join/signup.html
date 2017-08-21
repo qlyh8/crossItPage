@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>회원가입</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/Common/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/Common/bootstrap/css/custom.css">
+	<link rel="stylesheet" type="text/css" href="css/signup.css">
+	<script type="text/javascript" src="/Common/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="/Common/js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/Common/js/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+	<tr>
+		<td colspan="2">
+			<div class="form-group" style="text-align: center; margin: 0 auto;">
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-primary active Student">
+						<input type="radio" name="nfStudent" autocomplete="off" value="학생" checked>학생
+					</label> 
+					<label class="btn btn-primary Worker">
+						<input type="radio" name="nfWorker" autocomplete="off" value="직장인">직장인
+					</label>
+				</div>
+			</div>
+		</td>
+	</tr>	
+
+	<div class="container student_table">
+		<form method="post" id="s_frm" name="s_frm" enctype="multipart/form-data">
+			
+			<input type = "hidden" id="s_type" name="s_type" value="student" />
+			
+			<table class="table table-bordered table-hover" style="text-align: center; border:1px solid #dddddd">
+				<thead>
+					<tr>
+						<th colspan="3"><h4>크로스 아이티 회원 가입</h4></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="width:110px;">
+							<h5>아이디</h5>
+						</td>
+						<td>
+							<input class="form-control" type="text" id="id" name="id" maxlength="50" placeholder="아이디" />
+							<input class="form-control" type="button" id="s_idcheck" name="s_idcheck" value="중복확인" onClick="idCheck(this.form, 's_frm');"/>
+							<input type="hidden" id="s_event_idcheck" name="s_event_idcheck" value="N" />
+						</td>
+						<td rowspan="6">
+							<h4>본인 소개</h4>
+							<textarea class="form-control form-big" rows="12" id="letmein" name="letmein" maxlength="2048"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:50px;">
+							<h5>비밀번호</h5>
+						</td>
+						<td style="width:450px;" colspan="1">
+							<input class="form-control" type="password" id="password1" name="password1" maxlength="20" placeholder="비밀번호"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:50px;">
+							<h5>비밀번호 확인</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="password" id="password2" name="password2" maxlength="20" placeholder="비밀번호 확인" />
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>이름</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="name" name="name" maxlength="20" placeholder="홍길동"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>생년월일</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="birth" name="birth" maxlength="20" placeholder="OOOOOO" />
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>성별</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="gender" name="gender" maxlength="20" placeholder="남 / 여" />
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>학교</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="univ" name="univ" maxlength="20" placeholder="학교"/>
+						</td>	
+						<td rowspan="6">
+							<h4>지원 동기</h4>
+							<textarea class="form-control form-big2" rows="12" id="motive" name="motive" maxlength="2048"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>학과</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="major" name="major" maxlength="20" placeholder="학과 / 학부">
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>입학년도</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="enter" name="enter" maxlength="20" placeholder="2xxx년도 / O학년"/>
+						</td>					
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>학적상태</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="stat" name="stat" maxlength="20" placeholder="재학 / 휴학 / 졸업"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>휴대폰번호</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="phone" name="phone" maxlength="20" placeholder="010-OOOO-OOOO"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>주소</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="address" name="address" maxlength="20" placeholder="OO시 OO구 OO동"/>
+						</td>	
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>하고싶은분야</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="part" name="part" maxlength="20" placeholder="기획 / 디자인 / 개발"/>
+						</td>
+						<td rowspan="2">
+							<h4>하고 싶은 말</h4>
+							<textarea class="form-control form-big2" rows="3" id="lastword" name="lastword" maxlength="2048"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>사진</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="file" id="photo" name="photo" maxlength="20"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align:left" colspan="3">
+							<input class="btn btn-primary submit" type="button" id="s_submit" name="s_submit" value="회원가입"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	
+
+	<div class="container worker_table">
+		<form method="post" id="w_frm" name="w_frm" enctype="multipart/form-data">
+		
+			<input type = "hidden" id="w_type" name="w_type" value="worker" />
+			
+			<table class="table table-bordered table-hover" style="text-align: center; border:1px solid #dddddd">
+				<thead>
+					<tr>
+						<th colspan="3"><h4>크로스 아이티 회원 가입</h4></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="width:110px;">
+							<h5>아이디</h5>
+						</td>
+						<td>
+							<input class="form-control" type="text" id="id" name="id" maxlength="50" placeholder="아이디" />
+							<input class="form-control" type="button" id="w_idcheck" name="w_idcheck" value="중복확인"  onClick="idCheck(this.form, 'w_frm');"/>
+							<input type="hidden" id="w_event_idcheck" name="w_event_idcheck" value="N" />
+						</td>
+						<td rowspan="6">
+							<h4>본인 소개</h4>
+							<textarea class="form-control form-big" rows="12" id="letmein" name="letmein" maxlength="2048"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:50px;">
+							<h5>비밀번호</h5>
+						</td>
+						<td style="width:450px;" colspan="1">
+							<input class="form-control" type="password" id="password1" name="password1" maxlength="20" placeholder="비밀번호"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:50px;">
+							<h5>비밀번호 확인</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="password" id="password2" name="password2" maxlength="20" placeholder="비밀번호 확인" />
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>이름</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="name" name="name" maxlength="20" placeholder="홍길동"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>생년월일</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="birth" name="birth" maxlength="20" placeholder="OOOOOO" />
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>성별</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="gender" name="gender" maxlength="20" placeholder="남 / 여" />
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>직장명</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="place" name="place" maxlength="20" placeholder="( 필수아님 )"/>
+						</td>	
+						<td rowspan="6">
+							<h4>지원 동기</h4>
+							<textarea class="form-control form-big2" rows="12" id="motive" name="motive" maxlength="2048"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>연차</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="leave" name="leave" maxlength="20" placeholder="O년차">
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>야근빈도</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="overtime" name="overtime" maxlength="20" placeholder="없음 / 보통 / 잦음"/>
+						</td>					
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>주말출근</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="wendwork" name="wendwork" maxlength="20" placeholder="없음 / 종종 / 항상"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>휴대폰번호</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="phone" name="phone" maxlength="20" placeholder="010-OOOO-OOOO"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>주소</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="address" name="address" maxlength="20" placeholder="OO시 OO구 OO동"/>
+						</td>	
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>하고싶은분야</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="text" id="part" name="part" maxlength="20" placeholder="기획 / 디자인 / 개발"/>
+						</td>
+						<td rowspan="2">
+							<h4>하고 싶은 말</h4>
+							<textarea class="form-control form-big2" rows="3" id="lastword" name="lastword" maxlength="2048"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:110px;">
+							<h5>사진</h5>
+						</td>
+						<td colspan="1">
+							<input class="form-control" type="file" id="photo" name="photo" maxlength="20"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align:left" colspan="3">
+							<input class="btn btn-primary submit" type="button" id="w_submit" name="w_submit" value="회원가입"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	-->	
+</body>
+</html>

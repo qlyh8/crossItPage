@@ -1,0 +1,85 @@
+@CHARSET "utf-8";
+
+body {
+	height: 100vh;
+	background-color: #252c36;
+}
+
+h2 {
+	text-align: center;
+	color:white;
+}
+
+table, tbody, tr, th, td, .button {
+	border: 1px solid #4683b6;
+	color:white;
+}
+
+.center {
+	text-align: center;
+}
+
+#board_contact {
+	width: 1200px;
+	/*width:100%;*/
+	height: 100vh;
+	margin: auto;
+	background-color: #1C2631;
+}
+
+#list_div {
+	margin: auto;
+}
+
+table {
+	width:100%;
+	table-layout:fixed;
+}
+
+#board_grid {
+	width: 1200px;
+	height: 500px;
+	margin: auto;
+}
+
+/********************************************/
+.input {
+	background-color: #fb4468;
+}
+.clickable {
+	cursor: pointer;
+}
+.clickable:hover {
+	text-decoration: underline;
+}
+
+.active { 
+	color: #CD154A;
+}
+
+.page-line {
+	color: #C7C7C7;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+.contact-status {
+	color: red;
+}
+.read {
+	color: blue;
+}
+.completed {
+	color: gray;
+}
+
+input[type="button"] {
+	color:white;
+	border: 1px solid #4683b6;
+}  

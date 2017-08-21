@@ -1,0 +1,91 @@
+@CHARSET "UTF-8";
+
+@CHARSET "utf-8";
+
+body {
+	height: 100vh;
+	background-color: #252c36;
+}
+
+h2 {
+	text-align: center;
+	color: white;
+}
+
+table, tbody, tr, th, td, .button {
+	border: 1px solid #4683b6;
+	color: white;
+}
+
+.center {
+	text-align: center;
+}
+
+#board_contact {
+	width: 1200px;
+	/*width:100%;*/
+	height: 100vh;
+	margin: auto;
+	background-color: #1C2631;
+}
+
+#list_div {
+	margin: auto;
+}
+
+table {
+	width: 80%;
+	height: 70%;
+	table-layout:fixed;
+	margin: auto;
+}
+
+#board_join {
+	
+	justify-content: space-between;
+}
+
+.button {
+	border-radius: 45px;
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	justify-content: center;
+	width: 22%;
+	height: 45px;
+	border: 0;
+	padding: 15px;
+	color: white;
+	font-size: 14px;
+	line-height: 7px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+	background-color: #252c36;
+	border: 1px solid #4683b6;
+	margin-left: 20%;
+}
+
+.button:hover {
+	background-color: white;
+	opacity: 0.9;
+	transition: 0.7s;
+	color: white;
+}
+
+/********************************************/
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+
+input[type="button"] {
+	color: white;
+	border: 1px solid #4683b6;
+}

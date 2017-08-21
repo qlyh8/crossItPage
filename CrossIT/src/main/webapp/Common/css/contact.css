@@ -1,0 +1,92 @@
+#form_contact_section {
+	background-color: #1a242f;
+	    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+/*	width:100px;
+	height:35px;*/
+	position: relative;
+	left:50%;
+	top:10%;
+	margin-left: -485px;
+	/*transform:translateX(-50%) translateY(-50%);*/
+	cursor: pointer;
+	z-index: 99;
+	opacity: 0.8;
+}
+
+#form_contact_section > p {
+	color:#2271b4;
+	font-family: sans-serif;
+	font-size: 30px;
+	text-align:center;
+	line-height: 35px;
+}
+
+#form_contact {
+	width:970px;			/*500px->970px*/
+	height:400px;			/*300px->400px*/
+	margin:0px auto;
+	margin-top:5px;
+}
+
+#form_contact > div {
+	padding:5%;
+	margin:0px auto;
+}
+
+#form_contact > div > div {
+/*	width:250px;
+	height:40px;*/
+/*	margin:0px auto;*/
+	margin-bottom:10px;
+}
+
+#form_contact > div > div >input {
+	width:400px;
+	height:35px;
+	background:transparent;
+	color:#2271b4;
+	font-size:20px;
+	font-family: sans-serif;
+	border-radius: 5px;
+	margin:0px auto;
+	border-color: #2271b4;
+}
+
+#form_contact > div > div >textarea {
+	width:807px;					/*400->807*/
+	height:200px;					/*35->200*/
+	background:transparent;
+	color:#2271b4;
+	border-color: #2271b4;
+	font-size:20px;
+	font-family: sans-serif;
+	border-radius: 5px;
+	margin:0px auto;
+}
+input[type="button"] {
+	color:white;
+}
+input[placeholder] {
+	color:#2271b4;
+}
+
+#form_contact > div > #btn {
+/*	width:100px; */
+	height:35px;
+	margin:0px auto;
+
+}
+
+#form_contact > div > #btn > #submit{
+	width:813px;				/*405->813*/
+	height:35px;
+	padding: 0 !important;
+}
+
+#form_contact > div > #btn > #submit:hover {
+	opacity: 0.7;
+	background-color: white;
+	transition: 0.7s;
+}

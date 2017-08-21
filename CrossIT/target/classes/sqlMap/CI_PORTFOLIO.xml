@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="crossit.gandhi.dao.Ci_PortfolioDao"> 
+  	
+  	<insert id="insertPortfolio" parameterType="hashmap">
+		INSERT INTO CI_PORTFOLIO
+        (       
+        		PF_NAME
+        ,		PF_PARTLIST
+        ,		PF_SECTION
+        ,		PF_OBJV
+        ,		PF_PERIOD
+        ,		REG_DATE
+        )
+        
+        VALUES 
+        (   
+        		#{PF_NAME}
+        ,		#{PF_PARTLIST}
+        ,		#{PF_SECTION}
+		,		#{PF_OBJV}
+		,		#{PF_PERIOD}
+		,		NOW()
+	  	) 
+	</insert> 
+	
+	
+	<select id="selectListPortfolio" resultType="hashmap" parameterType="hashmap">
+	    SELECT  
+	    		PF_SEQ 
+	 	,		PF_NAME
+        ,		PF_PARTLIST
+        ,		PF_SECTION
+        ,		PF_OBJV
+        ,		PF_PERIOD
+        ,		REG_DATE
+			
+		FROM    
+				CI_PORTFOLIO
+		   
+		WHERE   1 = 1 
+		
+		ORDER BY PF_SEQ DESC
+		<if test="(STARTROW != null and STARTROW != '') or (ENDROW != null and ENDROW != '')">
+			LIMIT ${STARTROW}, ${ENDROW}
+		</if>
+	</select>
+	
+	
+	<select id="selectOnePortfolio" resultType="hashmap" parameterType="hashmap">
+	    SELECT  
+	    		PF_SEQ 
+	 	,		PF_NAME
+        ,		PF_PARTLIST
+        ,		PF_SECTION
+        ,		PF_OBJV
+        ,		PF_PERIOD
+        ,		REG_DATE
+			
+		FROM    
+				CI_PORTFOLIO   
+		WHERE   
+				PF_SEQ = #{PF_SEQ} 		 
+	</select>
+	
+	
+	<select id="selectTotalPortfolio" resultType="int">
+		SELECT COUNT(*)
+		
+		FROM  CI_PORTFOLIO
+		
+		WHERE 1 = 1
+	</select>
+	
+	
+	  <update id="update" parameterType="hashMap">
+		 UPDATE CI_PORTFOLIO 
+		 SET   	
+
+		<if test="PF_NAME != null and PF_NAME != '' ">
+		 		PF_NAME		 	= #{PF_NAME}
+		</if>
+		<if test="PF_PARTLIST != null and PF_PARTLIST != '' ">
+		 ,		PF_PARTLIST		= #{PF_PARTLIST}
+		</if>
+		<if test="PF_SECTION != null and PF_SECTION != '' ">
+		 ,		PF_SECTION		= #{PF_SECTION}
+		</if>
+		<if test="PF_OBJV != null and PF_OBJV != '' ">
+		 ,		PF_OBJV			= #{PF_OBJV}
+		</if>
+		 ,		PF_PERIOD		= #{PF_PERIOD}
+		
+		 WHERE  PF_SEQ			= #{PF_SEQ}
+    </update>
+    
+	<delete id="deletePortfolio" parameterType="hashmap">
+		DELETE FROM
+		      CI_PORTFOLIO
+		      
+		WHERE PF_SEQ = #{PF_SEQ}
+	</delete>
+
+</mapper>

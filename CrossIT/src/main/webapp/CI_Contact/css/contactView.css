@@ -1,0 +1,116 @@
+@CHARSET "UTF-8";
+ * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #252c36;
+	height: 100vh;
+}
+
+h2 {
+	text-align: center;
+	color:white;
+}
+
+table, tbody, tr, th, td, .button {
+	color: white;
+	border: 1px solid #4683b6;
+}
+
+.size {
+	height: 10%;
+}
+
+.td1{
+	width: 20%;
+	text-align: center;
+}
+
+.td2{
+	width: 80%;
+	text-align: center;
+}
+
+.contact_grid {
+	/*border:1px solid #4683b6;*/
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0
+		rgba(0, 0, 0, 0.24);
+	background-color: #1e2731;
+	justify-content: center;
+	color: white;
+	margin: auto;
+	width: 1200px;
+	height: 80vh;
+}
+
+#hire {
+	width: 560px;
+	padding: 8% 0 0;
+	margin: auto;
+}
+
+.contact_container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+}
+
+.button_grid {
+	display: flex;
+	justify-content: space-between;
+}
+
+.button {
+	border-radius: 45px;
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	justify-content: center;
+	width: 22%;
+	height: 45px;
+	border: 0;
+	padding: 15px;
+	color: white;
+	font-size: 14px;
+	line-height: 7px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+	background-color: #252c36;
+	border: 1px solid #4683b6;
+}
+
+.button:hover {
+	background-color: white;
+	opacity: 0.9;
+	transition: 0.7s;
+	color: white;
+}
+
+table {
+	width: 100%;
+	height: 70%;
+	table-layout:fixed;
+}
+
+/*
+.input {
+	background-color: #fb4468;
+}
+.clickable {
+	cursor: pointer;
+}
+.clickable:hover {
+	text-decoration: underline;
+}
+.active { 
+	color: #CD154A;
+}
+input[type="button"] {
+	color:white;
+	border: 1px solid #4683b6;
+}  
+*/

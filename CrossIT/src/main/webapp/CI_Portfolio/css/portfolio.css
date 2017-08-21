@@ -1,0 +1,117 @@
+@CHARSET "utf-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#board_portfolio {
+	background-color: #1C2631;
+	margin-top: 60px;
+	position: relative;
+	border: 1px solid #4683b6;
+	width: 100vw;
+	height: 500px;
+	margin: auto;
+}
+
+th {
+	color: white;
+	border: 1px solid #4683b6;
+}
+
+td {
+	color: white;
+	border: 1px solid #4683b6;
+	padding: 10px;
+}
+.center{
+	text-align: center;
+}
+
+h2 {
+	color: white;
+	text-align: center;
+}
+
+.input {
+	background-color: #fb4468;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.clickable:hover {
+	text-decoration: underline;
+}
+
+.active {
+	color: #CD154A;
+}
+
+.page-line {
+	color: #C7C7C7;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.portfolio-status {
+	color: red;
+}
+
+.read {
+	color: blue;
+}
+
+.completed {
+	color: gray;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+}
+
+#frm {
+	margin-top: 70px;
+	margin-bottom: 70px;
+	/*	margin-top:80px;
+		width:40vw;
+		height:80vh;*/
+	
+}
+
+input[type="button"] {
+	color: white;
+	border: 1px solid #4683b6;
+}
+
+.button {
+	position: absolute;
+	border: 1px solid #4683b6;
+	color: white;
+}
+
+.button:hover {
+	background-color: white;
+	opacity: 0.8;
+	transition: 0.7s;
+}
+
+.right_button {
+	position: relative;
+	float: right;
+}
+
+#list_div {
+	position: relative;
+}

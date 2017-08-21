@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="crossit.gandhi.dao.Ci_NoticeDao"> 
+
+  	
+  	<insert id="insert" parameterType="hashmap" >
+		INSERT INTO CI_NOTICE
+        (        
+				NOTI_TITLE      
+		,		NOTI_CONTENT   
+		,       NOTI_CNT  
+		,       NOTI_ORG_FILE_NM   
+		,       NOTI_SAVE_FILE_NM   
+		,       NOTI_FILE_PATH  
+		,       REG_USER_SEQ
+		,       REG_DATE   
+		,       UPD_USER_SEQ
+		,       UPD_DATE   
+        )
+        VALUES 
+        (   
+        		#{NOTI_TITLE}
+		,		#{NOTI_CONTENT}        
+		,		#{NOTI_CNT}
+		,		#{NOTI_ORG_FILE_NM}
+		,		#{NOTI_SAVE_FILE_NM}
+		,		#{NOTI_FILE_PATH}
+		,		#{REG_USER_SEQ}
+		,		NOW()
+		,		#{UPD_USER_SEQ}
+		,		NOW()
+	  	) 
+	</insert> 
+	
+	
+	<select id="selectList" resultType="hashmap" parameterType="hashmap">
+	    SELECT  
+	    		A.NOTI_SEQ      
+		,		A.NOTI_TITLE       
+		,		A.NOTI_CONTENT    
+		,		A.NOTI_CNT 	
+		, 		A.REG_DATE
+		, 		B.USER_NAME
+			
+		FROM CI_NOTICE A
+		LEFT JOIN CI_USER B ON (A.REG_USER_SEQ=B.USER_SEQ)
+		   
+		WHERE   1 = 1 
+		
+		ORDER BY A.NOTI_SEQ DESC
+      <if test="(STARTROW != null and STARTROW != '') or  (ENDROW != null and ENDROW != '')">
+      LIMIT ${STARTROW}, ${ENDROW}
+      </if>
+	</select>
+	
+	<select id="selectOne" resultType="hashmap" parameterType="hashmap">
+	    SELECT  
+	    		A.NOTI_SEQ      
+		,		A.NOTI_TITLE      
+		,       A.NOTI_CONTENT   
+		,       A.NOTI_CNT   
+		,       A.NOTI_ORG_FILE_NM   
+		,       A.NOTI_SAVE_FILE_NM   
+		,       A.NOTI_FILE_PATH   
+		,       A.REG_USER_SEQ   
+		,       A.REG_DATE   
+		,       A.UPD_USER_SEQ   
+		,       A.UPD_DATE   
+		, 		B.USER_NAME
+			
+		FROM CI_NOTICE A
+		LEFT JOIN CI_USER B ON (A.REG_USER_SEQ=B.USER_SEQ)
+		
+		WHERE   
+				A.NOTI_SEQ = #{NOTI_SEQ} 
+		 
+	</select>
+	 
+	 
+	  <update id="update" parameterType="hashMap">
+		 UPDATE CI_NOTICE 
+		 SET   	
+		        UPD_DATE 	 = NOW()
+		 ,		UPD_USER_SEQ = #{USER_SEQ}
+		<if test="NOTI_TITLE != null and NOTI_TITLE != '' ">
+		 ,		NOTI_TITLE		 = #{NOTI_TITLE}
+		</if>
+		<if test="NOTI_CONTENT != null and NOTI_CONTENT != '' ">
+		 ,		NOTI_CONTENT        = #{NOTI_CONTENT}
+		</if>
+		<if test="NOTI_CNT != null and NOTI_CNT != '' ">
+		 ,		NOTI_CNT        = #{NOTI_CNT}
+		</if>
+		<if test="NOTI_ORG_FILE_NM != null and NOTI_ORG_FILE_NM != '' ">
+		 ,		NOTI_ORG_FILE_NM        = #{NOTI_ORG_FILE_NM}
+		</if>
+		<if test="NOTI_FILE_PATH != null and NOTI_FILE_PATH != '' ">
+		 ,		NOTI_FILE_PATH        = #{NOTI_FILE_PATH}
+		</if>
+		
+		 WHERE  NOTI_SEQ	 = #{NOTI_SEQ}
+    </update>  
+    
+    
+	<delete id="delete" parameterType="hashmap">
+		DELETE FROM
+		      CI_NOTICE
+		WHERE NOTI_SEQ	 = #{NOTI_SEQ}
+	</delete>
+	
+	<select id="selectCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM  CI_NOTICE
+		WHERE 1=1 
+	</select>
+	
+	<update id="increseCnt" parameterType="hashmap" >
+		UPDATE CI_NOTICE
+		SET
+			NOTI_CNT = NOTI_CNT+1
+		WHERE NOTI_SEQ = #{NOTI_SEQ}
+	</update> 
+	
+	 
+
+</mapper>

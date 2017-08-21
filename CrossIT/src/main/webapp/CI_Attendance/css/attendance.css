@@ -1,0 +1,189 @@
+@CHARSET "UTF-8";
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	background-color: #252c36;
+	margin: 1px;
+}
+
+table {
+	color: white;
+	margin: auto;
+	width: 100%;
+	border: 1px solid #4683b6;
+}
+
+th, td {
+	margin: 30px;
+	padding: 10px;
+	text-align: center;
+	border: 1px solid #4683b6;
+}
+
+h2 {
+	color: white;
+	text-align: center;
+}
+h4 {
+	color: white;
+}
+
+input {
+	background-color: blue;
+	/*	#f3e9de 
+	#29bdc2
+	#fb4468
+	#edced3
+	#f3e9de */
+	border: 1px solid #4683b6;
+}
+
+.button {
+	border-radius: 45px;
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	justify-content: center;
+	width: 22%;
+	height: 45px;
+	border: 0;
+	padding: 15px;
+	color: white;
+	font-size: 14px;
+	line-height: 7px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+	background-color: #252c36;
+	border: 1px solid #4683b6;
+}
+
+.button:hover {
+	background-color: white;
+	opacity: 0.9;
+	transition: 0.7s;
+	color: white;
+}
+
+
+.attendance_grid {
+	margin: auto;
+	width: 100%;
+	height: 30vh;
+}
+
+/*attendance section*/
+#board_attendance {
+	background-color: #1e2631;
+	padding: 10px;
+}
+
+/* 부제목 */
+#attendance-text {
+	color: white;
+	display: none;
+}
+
+/* 수정 버튼 */
+#attendance-update-btn {
+	float: left;
+	color: white;
+	margin-top: 10px;
+}
+
+/* check-box */
+.attendance-check {
+	display: none;
+}
+
+/* calendar button*/
+.calendar {
+	border: 1px solid #4683b6;
+}
+/* last column */
+.last_date {
+	display: none;
+}
+
+/* date delete button */
+#date-delete-btn {
+	display: none;
+	float: right;
+	color: white;
+}
+/* 날짜 삭제 팝업창 */
+.pop-ul {
+	list-style-type: none;
+	max-width: 200px;
+}
+/* 기본 css 및 선택하지 않은 경우 */
+.pop-li {
+	border: 1px solid #cccccc;
+	padding: 5px;
+	list-style-type: none;
+	color: white;
+}
+/* 선택한 경우 css */
+.popo-li.on {
+	
+}
+
+/* attendance buttons */
+#attendance-present-btn {
+	border: 1px solid #f3e9de;
+	/*background-color:#f3e9de;*/
+	display: none;
+}
+
+#attendance-late-btn {
+	border: 1px solid #29bdc2;
+	/*background-color:#29bdc2;*/
+	display: none;
+}
+
+#attendance-absent-btn {
+	border: 1px solid #fb4468;
+	/*background-color:#fb4468;*/
+	display: none;
+}
+
+#attendance-plus-btn {
+	border: 1px solid #edced3;
+	/*background-color:#edced3;*/
+	display: none;
+}
+
+#attendance-remove-btn {
+	border: 1px solid #fbdba4;
+	/*background-color:#fbdba4;	*/
+	display: none;
+}
+
+#attendance-submit {
+	border: 1px solid #edced3;
+	/*background-color:#edced3;*/
+	display: none;
+}
+
+/* attendance texts */
+.present {
+	color: green;
+}
+
+.late {
+	color: #FF8000;
+}
+
+.absent {
+	color: red;
+}
+
+.plus {
+	color: blue;
+}

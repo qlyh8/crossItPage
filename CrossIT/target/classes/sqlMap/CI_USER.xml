@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="crossit.gandhi.dao.Ci_UserDao"> 
+
+	<!-- 로그인 -->
+	<select id="login" resultType="hashmap" parameterType="hashmap">
+	    SELECT  
+	    		USER_SEQ      
+		,		USER_ID       
+		,		USER_NAME   
+		,		USER_KIND 	
+		FROM    
+				CI_USER 
+		WHERE   
+				USER_ID = #{USER_ID} 
+		AND     USER_PW = PASSWORD(#{USER_PW}) 
+		AND     USER_STATUS IN ('Y')
+	</select>
+ 	
+ 	 
+  	
+	<!-- 회원 가입 -->
+  	<insert id="insertUser" parameterType="hashmap" >
+		INSERT INTO CI_USER
+        (        
+				USER_ID      
+		,		USER_PW      
+		,		USER_NAME       
+		,		USER_BIRTH  
+		,		USER_GENDER    
+		,		USER_PHONE        
+		,		USER_ADDR  
+		,		USER_PART      
+		,		USER_MOTIVE
+		,		USER_LETMEIN
+		,		USER_LASTWORD
+		,		USER_UNIV
+		,		USER_PLACE
+		,		USER_MAJOR
+		,		USER_LEAVE
+		,		USER_ENTER
+		,		USER_OVERTIME
+		,		USER_STAT       
+		,		USER_WENDWORK
+		,		ORG_FILE_NM
+		,		SAVE_FILE_NM
+		,		FILE_PATH
+		,		REG_DATE
+        )
+        VALUES 
+        (   
+        		#{USER_ID}
+		,		PASSWORD(#{USER_PW})
+		,		#{USER_NAME}        
+		,		#{USER_BIRTH}
+		,		#{USER_GENDER}   
+		,		#{USER_PHONE}        
+		,		#{USER_ADDR}  
+		,		#{USER_PART}      
+		,		#{USER_MOTIVE}
+		,		#{USER_LETMEIN}
+		,		#{USER_LASTWORD}
+		,		#{USER_UNIV}
+		,		#{USER_PLACE}
+		,		#{USER_MAJOR}
+		,		#{USER_LEAVE}
+		,		#{USER_ENTER}
+		,		#{USER_OVERTIME}
+		,		#{USER_STAT}       
+		,		#{USER_WENDWORK}
+		,		#{ORG_FILE_NM}
+		,		#{SAVE_FILE_NM}
+		,		#{FILE_PATH}
+		,		NOW()
+	  	) 
+	</insert> 
+	
+ 
+    <!-- 아이디 중복 -->
+  	<select id="idCnt" resultType="java.lang.Integer" parameterType="hashMap">
+	  	SELECT 	COUNT(USER_SEQ) AS TOTAL
+	  	FROM 	CI_USER
+	   	WHERE 
+			USER_ID	= #{USER_ID} 
+  	</select>
+  	
+  	
+  	<!-- 모든 유저 리스트 -->
+  	<select id="selectList" resultType="hashmap">
+	    SELECT  
+	    		USER_SEQ      
+		,		USER_NAME      
+		,		USER_ID
+		,		USER_STATUS
+		, 		REG_DATE
+			
+		FROM CI_USER
+		   
+		WHERE   1 = 1 
+		
+		ORDER BY USER_SEQ DESC
+      <if test="(STARTROW != null and STARTROW != '') or  (ENDROW != null and ENDROW != '')">
+      LIMIT ${STARTROW}, ${ENDROW}
+      </if>
+	</select>
+  	
+ 	
+	<!-- 회원 수 조회 -->
+	<select id="selectCnt" resultType="int">
+		SELECT COUNT(*)
+		
+		FROM  CI_USER
+		
+		WHERE 1 = 1 
+	</select>
+	
+	
+  	<!-- 한개 리스트 -->
+  	<select id="selectOne" resultType="int" parameterType="hashmap">
+		SELECT  
+	   			USER_SEQ
+		FROM    
+				CI_USER 
+		WHERE   
+				USER_ID	= #{USER_ID} 		 
+	</select>
+	
+	
+	<!-- 유저정보 -->
+  	<select id="selectById" resultType="hashmap" parameterType="hashmap">
+		SELECT  
+				USER_SEQ
+	   	,		USER_ID      
+		,		USER_PW   
+		,		USER_KIND
+		,		USER_STATUS
+		,		USER_TERM        
+		,		USER_NAME       
+		,		USER_BIRTH  
+		,		USER_GENDER    
+		,		USER_PHONE        
+		,		USER_ADDR  
+		,		USER_PART      
+		,		USER_UNIV
+		,		USER_PLACE
+		,		USER_MAJOR
+		,		USER_LEAVE
+		,		USER_ENTER
+		,		USER_OVERTIME
+		,		USER_STAT       
+		,		USER_WENDWORK
+		,		SAVE_FILE_NM
+		,		FILE_PATH
+		,		USER_LETMEIN
+		,		USER_MOTIVE
+		,		USER_LASTWORD 
+		,		REG_DATE
+		FROM    
+				CI_USER 
+		WHERE   
+				USER_SEQ	= #{USER_SEQ} 		 
+	</select>
+	
+	
+	<!-- 유저정보 변경 -->
+  	<update id="updateInfo" parameterType="hashmap">
+		UPDATE CI_USER 
+		
+		SET
+		<if test="USER_ID != null and USER_ID != '' ">   			
+				USER_ID			= #{USER_ID}
+		</if>
+		<if test="USER_BIRTH != null">   			
+		,		USER_BIRTH		= #{USER_BIRTH}
+		</if>
+		<if test="USER_PHONE != null">   	
+		,		USER_PHONE		= #{USER_PHONE}
+		</if>
+		<if test="USER_ADDR != null">   	
+		,		USER_ADDR		= #{USER_ADDR}
+		</if>	
+		<if test="USER_PART != null">   	
+		,		USER_PART		= #{USER_PART}
+		</if>	
+		   	
+		,		USER_UNIV		= #{USER_UNIV}
+		,		USER_MAJOR		= #{USER_MAJOR}
+		,		USER_ENTER		= #{USER_ENTER}
+		,		USER_STAT		= #{USER_STAT}
+		,		USER_PLACE		= #{USER_PLACE}
+		,		USER_LEAVE		= #{USER_LEAVE}
+		,		USER_OVERTIME	= #{USER_OVERTIME}
+		,		USER_WENDWORK	= #{USER_WENDWORK}
+		
+		WHERE  USER_SEQ			= #{USER_SEQ}
+		  	 
+	</update>
+	
+	
+	<!-- 유저 상태 변경 -->
+	<update id="updateStatus" parameterType="hashMap">
+		UPDATE CI_USER 
+		
+		SET
+		<if test="USER_STATUS != 'N'">
+				USER_STATUS	= #{USER_STATUS}
+		</if>
+		<if test="USER_KIND != 'N'">
+		,		USER_KIND	= #{USER_KIND}
+		</if>
+		<if test="USER_TERM != 0">
+		,		USER_TERM	= #{USER_TERM}
+		</if>
+		
+		 WHERE  USER_SEQ	= #{USER_SEQ}
+    </update>
+	
+	
+	<!-- 회원 삭제 -->
+	<delete id="delete" parameterType="hashmap">
+		DELETE FROM
+		      CI_USER
+		      
+		WHERE USER_SEQ	 = #{USER_SEQ}
+	</delete>
+	
+</mapper>

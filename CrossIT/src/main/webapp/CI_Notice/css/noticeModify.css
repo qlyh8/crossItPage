@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+#hire {
+	margin-bottom: 140px;
+}
+
+#frm {
+	border: 0;
+	margin-bottom: 130px;
+	background-color: #1c2631;
+}
+
+td {
+	position: relative;
+}
+
+td input {
+	width: 100%;
+}
+
+td textarea {
+	width: 100%;
+}

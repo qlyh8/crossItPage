@@ -1,0 +1,38 @@
+.intro_col_small {
+	color: white;
+	background-color: #1c2530;
+}
+
+.intro_col_small p {
+	color: white;
+}
+
+.intro_lower {
+	color: white;
+	background-color: #1c2530;
+}
+
+.port_card {
+	background-color: #1c2530;
+}
+
+.post_p {
+	color: white;
+}
+
+.button {
+	color: white;
+}
+
+.intro_container {
+	flex-direction: row;
+	justify-content: space-between;
+	max-width: 1000px;
+	margin: 0 auto;
+	display: flex;
+	height: 980px;
+}
+
+.arti2 h1 {
+	color: black;
+}

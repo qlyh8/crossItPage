@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="crossit.gandhi.dao.Ci_AttendanceDao"> 
+	
+	<!-- 유저 추가 -->
+  	<insert id="insert" parameterType="hashmap">
+		INSERT INTO CI_ATTENDANCE
+        (       
+        		AT_SEQ
+        )
+        VALUES 
+        (   
+        		#{AT_SEQ}
+	  	) 
+	</insert> 
+	
+	
+	<!-- 출결에 날짜 칼럼 추가 -->
+	<insert id="addColumn">
+		ALTER TABLE 
+					CI_ATTENDANCE
+		ADD COLUMN	
+					AT_DATE 
+					VARCHAR(50) NULL DEFAULT ''
+	</insert> 
+	
+	
+	<!-- 기수에 따른 리스트 -->
+	<select id="selectList" resultType="hashmap" parameterType="hashmap">
+	    SELECT  
+	    		A.AT_SEQ      
+		,		B.USER_NAME 
+		,		B.USER_KIND       
+		,		B.USER_TERM   
+		,		A.AT_REST
+		,       A.AT_PRESENT 
+		,       A.AT_LATE  
+		,       A.AT_ABSENT
+		,       A.AT_PLUS
+			
+		FROM
+				CI_ATTENDANCE A
+				LEFT JOIN CI_USER B ON (A.AT_SEQ = B.USER_SEQ)
+		   
+		WHERE   #{USER_TERM} = B.USER_TERM
+		
+		ORDER BY 
+				B.USER_NAME
+      <if test="(STARTROW != null and STARTROW != '') or  (ENDROW != null and ENDROW != '')">
+      LIMIT ${STARTROW}, ${ENDROW}
+      </if>
+	</select>
+	
+	
+	<!-- 기수에 따른 전체 리스트 -->
+	<select id="selectAllList" resultType="hashmap" parameterType="hashmap">
+	    SELECT  *
+			
+		FROM
+				CI_ATTENDANCE A
+				LEFT JOIN CI_USER B ON (A.AT_SEQ = B.USER_SEQ)
+		   
+		WHERE   #{USER_TERM} = B.USER_TERM
+		
+		ORDER BY 
+				B.USER_NAME
+      <if test="(STARTROW != null and STARTROW != '') or  (ENDROW != null and ENDROW != '')">
+      LIMIT ${STARTROW}, ${ENDROW}
+      </if>
+	</select>
+ 	
+ 	
+ 	<!-- 한 유저에 대한 출결 -->
+	<select id="selectByUser" resultType="hashmap" parameterType="hashmap">
+	    SELECT  *
+		FROM
+				CI_ATTENDANCE A
+				LEFT JOIN CI_USER B ON (A.AT_SEQ = B.USER_SEQ)
+		   
+		WHERE	A.AT_SEQ = #{AT_SEQ}		
+		
+      <if test="(STARTROW != null and STARTROW != '') or  (ENDROW != null and ENDROW != '')">
+      LIMIT ${STARTROW}, ${ENDROW}
+      </if>
+	</select>
+ 	
+ 	
+ 	<!-- 리스트 총 갯수 -->
+	<select id="selectTotal" resultType="int" parameterType="hashmap">
+ 		SELECT 
+ 				COUNT(*) 		
+ 		FROM	
+ 				CI_USER
+ 		
+ 		WHERE	#{USER_TERM} = USER_TERM
+ 	</select>
+	 
+	 
+	<!-- 한 개 리스트 변경  -->
+	<update id="update" parameterType="hashMap">
+		UPDATE CI_ATTENDANCE 
+		SET   			
+		<if test="AT_REST != null and DT_TERM != ''">
+				AT_REST		= #{AT_REST}
+		</if>
+		<if test="AT_PRESENT != null and DT_TERM != ''">
+		 ,		AT_PRESENT	= #{AT_PRESENT}
+		</if>
+		<if test="AT_LATE != null and DT_TERM != ''">
+		 ,		AT_LATE		= #{AT_LATE}
+		</if>
+		<if test="AT_ABSENT != null and DT_TERM != ''">
+		 ,		AT_ABSENT	= #{AT_ABSENT}
+		</if>
+		<if test="AT_PLUS != null and DT_TERM != ''">
+		 ,		AT_PLUS		= #{AT_PLUS}
+		</if>
+		
+		 WHERE  AT_SEQ 		= #{AT_SEQ}
+	</update>  
+	
+	
+	<!-- 한 개 리스트 변경 - 날짜 칼럼 -->
+	<update id="updateDate" parameterType="hashMap">
+		UPDATE CI_ATTENDANCE 
+		SET   			
+				AT_DATE		= #{AT_DATE}
+		
+		 WHERE  AT_SEQ 		= #{AT_SEQ}
+	</update>  
+	
+	
+	<!-- 칼럼명 변경 -->
+	<update id="changeColumn" parameterType="hashmap">	
+		ALTER TABLE 
+						CI_ATTENDANCE
+		CHANGE		
+						AT_DATE 
+						<![CDATA[ ${AT_DATE} ]]>
+						VARCHAR(50) NULL DEFAULT ''
+	</update>
+	
+	
+	<!-- 칼럼명 변경 -->
+	<update id="changeColumn2" parameterType="hashmap">	
+		ALTER TABLE 
+						CI_ATTENDANCE
+		CHANGE		
+						${OLD_DATE} 
+						<![CDATA[ ${NEW_DATE} ]]>
+						VARCHAR(50) NULL DEFAULT ''
+	</update>
+	
+	
+	<delete id="delete" parameterType="hashmap">
+		DELETE FROM
+		      CI_ATTENDANCE
+		      
+		WHERE AT_SEQ = #{AT_SEQ}
+	</delete>
+
+</mapper>

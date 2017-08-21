@@ -1,0 +1,64 @@
+@CHARSET "EUC-KR";
+
+/*PAGNATION*/
+.paging {
+	padding:20px 0;
+	text-align:center;
+}
+
+.paging a, 
+.paging strong  {
+	vertical-align: middle;
+	padding: 0 6px
+}
+
+.paging strong {
+	color: #0089e7
+}
+
+.paging .first, 
+.paging .prev, 
+.paging .next, 
+.paging .end {
+	display: inline-block;
+	height: 13px;
+	font-size: 0;
+	line-height: 0;
+	padding: 0
+}
+
+.paging .first {
+	width: 15px;
+	background: url(/Common/images/bt_page.gif) no-repeat
+}
+
+.paging .prev {
+	width: 13px;
+	background: url(/Common/images/bt_page.gif) no-repeat -19px 0;
+	margin-left: 4px;
+	margin-right: 14px
+}
+
+.paging .next {
+	width: 13px;
+	background: url(/Common/images/bt_page.gif) no-repeat -36px 0;
+	margin-right: 4px;
+	margin-left: 14px
+}
+
+.paging .end {
+	width: 15px;
+	background: url(/Common/images/bt_page.gif) no-repeat -53px 0
+}
+
+.tbHead .fL {
+	padding-top: 5px
+}
+
+.tbHead .fR {
+	margin: 0 0 10px
+}
+
+.tbHead .fR .select {
+	vertical-align: middle
+}
