@@ -26,7 +26,7 @@ CrossIT 1기 D팀(gandhi)의 웹 프로젝트로, 동아리 운영을 위한 동
 + 개인정보 수정
 + 출결현황 확인
 
-#### _운영진_ ####
+#### _운영진 기능_ ####
 + 로그인: LOGIN
 + 공지사항 관리 : NOTICE
 + 회원 승인 : APPROVAL
@@ -36,4 +36,4 @@ CrossIT 1기 D팀(gandhi)의 웹 프로젝트로, 동아리 운영을 위한 동
 + 문의 관리
 
 ### 시연 동영상 ###
-[Youtube](https://www.youtube.com/watch?v=zg5t5yxtLms)
+* [Youtube](https://www.youtube.com/watch?v=zg5t5yxtLms)
